@@ -39,12 +39,7 @@ export default function UserDashboard({ user, setShowSignup, setCurrentUser }) {
         <Text style={styles.streetName}>{item.name}</Text>
         <Text style={styles.floodRiskText}>{item.floodRisk} Risk</Text>
       </View>
-      <View
-        style={[
-          styles.statusBadge,
-          { backgroundColor: getStatusColor(item.status) },
-        ]}
-      >
+      <View style={[styles.statusBadge, { backgroundColor: getStatusColor(item.status) }]}>
         <Text style={styles.statusText}>{getStatusLabel(item.status)}</Text>
       </View>
     </View>
@@ -59,40 +54,28 @@ export default function UserDashboard({ user, setShowSignup, setCurrentUser }) {
     >
       <StatusBar style={theme.isDark ? "light" : "dark"} />
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-        {/* Header Section */}
         <View style={styles.headerSection}>
           <View style={styles.topBar}>
-            {/* Profile Avatar */}
-            <TouchableOpacity 
-              style={styles.profileAvatar}
-              onPress={() => setShowSettings(true)}
-            >
-              <Text style={styles.avatarText}>
-                {user?.displayName?.charAt(0).toUpperCase() || 'U'}
-              </Text>
+            <TouchableOpacity style={styles.profileAvatar} onPress={() => setShowSettings(true)}>
+              <Text style={styles.avatarText}>{user?.displayName?.charAt(0).toUpperCase() || 'U'}</Text>
             </TouchableOpacity>
-
-            {/* Search Bar */}
             <View style={styles.searchContainer}>
               <Feather name="search" size={18} color="#9ca3af" style={styles.searchIcon} />
               <TextInput
                 style={styles.searchInput}
                 placeholder="Search street..."
-                placeholderTextColor="#d1d5db"
+                placeholderTextColor={theme.colors.inputPlaceholder}
                 value={searchQuery}
                 onChangeText={handleSearch}
               />
             </View>
           </View>
-
-          {/* Welcome Message */}
           <View style={styles.welcomeSection}>
             <Text style={styles.welcomeTitle}>Welcome, {user?.displayName || 'User'}!</Text>
             <Text style={styles.welcomeSubtitle}>Road Status in Marulas</Text>
           </View>
         </View>
 
-        {/* Map Placeholder */}
         <View style={styles.mapContainer}>
           <LinearGradient
             colors={['#e0e7ff', '#c7d2fe']}
@@ -106,7 +89,6 @@ export default function UserDashboard({ user, setShowSignup, setCurrentUser }) {
           </LinearGradient>
         </View>
 
-        {/* Status Legend */}
         <View style={styles.legendContainer}>
           <View style={styles.legendItem}>
             <View style={[styles.legendDot, { backgroundColor: '#10b981' }]} />
@@ -122,7 +104,6 @@ export default function UserDashboard({ user, setShowSignup, setCurrentUser }) {
           </View>
         </View>
 
-        {/* Streets List */}
         <View style={styles.streetsSection}>
           <Text style={styles.sectionTitle}>Road Status</Text>
           {filteredStreets.length > 0 ? (
@@ -141,13 +122,7 @@ export default function UserDashboard({ user, setShowSignup, setCurrentUser }) {
         </View>
       </ScrollView>
 
-      {/* Settings Modal */}
-      <Modal
-        visible={showSettings}
-        transparent
-        animationType="slide"
-        onRequestClose={() => setShowSettings(false)}
-      >
+      <Modal visible={showSettings} transparent animationType="slide" onRequestClose={() => setShowSettings(false)}>
         <View style={styles.modalOverlay}>
           <View style={styles.settingsModal}>
             <View style={styles.modalHeader}>
@@ -156,25 +131,18 @@ export default function UserDashboard({ user, setShowSignup, setCurrentUser }) {
                 <Feather name="x" size={24} color="#1f2937" />
               </TouchableOpacity>
             </View>
-
-            <View style={styles.settingsContent}>
-              {/* User Info */}
+            <ScrollView style={styles.settingsContent} showsVerticalScrollIndicator={false}>
               <View style={styles.userInfo}>
                 <View style={styles.settingsAvatar}>
-                  <Text style={styles.settingsAvatarText}>
-                    {user?.displayName?.charAt(0).toUpperCase() || 'U'}
-                  </Text>
+                  <Text style={styles.settingsAvatarText}>{user?.displayName?.charAt(0).toUpperCase() || 'U'}</Text>
                 </View>
                 <View style={styles.userDetails}>
                   <Text style={styles.userName}>{user?.displayName || 'User'}</Text>
                   <Text style={styles.userEmail}>{user?.email}</Text>
                 </View>
               </View>
-
-              {/* Settings Options */}
               <View style={styles.settingsSection}>
                 <Text style={styles.sectionTitle}>Appearance</Text>
-                
                 <View style={styles.settingItem}>
                   <View style={styles.settingInfo}>
                     <Feather name="moon" size={20} color={theme.colors.textSecondary} />
@@ -188,10 +156,8 @@ export default function UserDashboard({ user, setShowSignup, setCurrentUser }) {
                   />
                 </View>
               </View>
-
               <View style={styles.settingsSection}>
                 <Text style={styles.sectionTitle}>Notifications</Text>
-                
                 <View style={styles.settingItem}>
                   <View style={styles.settingInfo}>
                     <Feather name="bell" size={20} color="#6b7280" />
@@ -205,16 +171,9 @@ export default function UserDashboard({ user, setShowSignup, setCurrentUser }) {
                   />
                 </View>
               </View>
-
               <View style={styles.settingsSection}>
                 <Text style={styles.sectionTitle}>Language</Text>
-                
-                <TouchableOpacity 
-                  style={styles.settingItem}
-                  onPress={() => {
-                    setLanguage(language === 'Filipino' ? 'English' : 'Filipino');
-                  }}
-                >
+                <TouchableOpacity style={styles.settingItem} onPress={() => setLanguage(language === 'Filipino' ? 'English' : 'Filipino')}>
                   <View style={styles.settingInfo}>
                     <Feather name="globe" size={20} color="#6b7280" />
                     <Text style={styles.settingLabel}>Language</Text>
@@ -225,46 +184,31 @@ export default function UserDashboard({ user, setShowSignup, setCurrentUser }) {
                   </View>
                 </TouchableOpacity>
               </View>
-
               <View style={styles.settingsSection}>
                 <Text style={styles.sectionTitle}>Support</Text>
-                
                 <TouchableOpacity style={styles.settingItem}>
-                  <View style={styles.settingInfo}>
-                    <Feather name="help-circle" size={20} color="#6b7280" />
-                    <Text style={styles.settingLabel}>Help & Support</Text>
-                  </View>
+                  <View style={styles.settingInfo}><Feather name="help-circle" size={20} color="#6b7280" /><Text style={styles.settingLabel}>Help & Support</Text></View>
                   <Feather name="chevron-right" size={16} color="#9ca3af" />
                 </TouchableOpacity>
-
                 <TouchableOpacity style={styles.settingItem}>
-                  <View style={styles.settingInfo}>
-                    <Feather name="info" size={20} color="#6b7280" />
-                    <Text style={styles.settingLabel}>About SafePath</Text>
-                  </View>
+                  <View style={styles.settingInfo}><Feather name="info" size={20} color="#6b7280" /><Text style={styles.settingLabel}>About SafePath</Text></View>
                   <Feather name="chevron-right" size={16} color="#9ca3af" />
                 </TouchableOpacity>
               </View>
-
-              {/* Logout Button */}
               <TouchableOpacity
                 style={styles.logoutButton}
                 onPress={() => {
                   setShowSettings(false);
-                  Alert.alert(
-                    'Logout',
-                    'Are you sure you want to logout?',
-                    [
-                      { text: 'Cancel', style: 'cancel' },
-                      { text: 'Logout', onPress: handleLogout, style: 'destructive' }
-                    ]
-                  );
+                  Alert.alert('Logout', 'Are you sure you want to logout?', [
+                    { text: 'Cancel', style: 'cancel' },
+                    { text: 'Logout', onPress: handleLogout, style: 'destructive' }
+                  ]);
                 }}
               >
                 <Feather name="log-out" size={20} color="#ef4444" />
                 <Text style={styles.logoutText}>Logout</Text>
               </TouchableOpacity>
-            </View>
+            </ScrollView>
           </View>
         </View>
       </Modal>

@@ -46,3 +46,10 @@ google-services.json
 # IDE / misc
 .vscode/
 *.log
+
+# Docs you don’t want
+README.md
+TODO.md
+Pushing.md
+how --name-only 4e17f13
+

@@ -1,12 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, TextInput, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, ScrollView } from 'react-native';
 import React from 'react';
 import { Feather } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { styles } from './signup_styles.js';
+import { createStyles } from './signup_styles.js';
 import { signUp } from '../../utils/firebase.js';
+import { useTheme } from '../../utils/ThemeContext';
 
 export default function Signup({ setShowSignup, setCurrentUser }) {
+  const { theme } = useTheme();
+  const styles = createStyles(theme);
   const [fullName, setFullName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -54,14 +57,14 @@ export default function Signup({ setShowSignup, setCurrentUser }) {
 
   return (
     <LinearGradient
-      colors={['#1e3a8a', '#1e40af', '#3b82f6']}
+      colors={[theme.colors.gradientStart, theme.colors.gradientMiddle, theme.colors.gradientEnd]}
       style={styles.Main}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
     >
-      <StatusBar style="light" />
+      <StatusBar style={theme.isDark ? "light" : "dark"} />
       <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
-        <View style={styles.scrollContainer}>
+        <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }} keyboardShouldPersistTaps="handled">
         
         {/* Header Section */}
         <View style={styles.headerContainer}>
@@ -96,7 +99,7 @@ export default function Signup({ setShowSignup, setCurrentUser }) {
               <TextInput 
                 style={styles.input} 
                 placeholder="John Doe" 
-                placeholderTextColor="#d1d5db"
+                placeholderTextColor={theme.colors.inputPlaceholder}
                 value={fullName}
                 onChangeText={setFullName}
               />
@@ -111,7 +114,7 @@ export default function Signup({ setShowSignup, setCurrentUser }) {
               <TextInput 
                 style={styles.input} 
                 placeholder="you@email.com" 
-                placeholderTextColor="#d1d5db"
+                placeholderTextColor={theme.colors.inputPlaceholder}
                 value={email}
                 onChangeText={setEmail}
                 keyboardType="email-address"
@@ -127,7 +130,7 @@ export default function Signup({ setShowSignup, setCurrentUser }) {
               <TextInput 
                 style={styles.input} 
                 placeholder="••••••••" 
-                placeholderTextColor="#d1d5db" 
+                placeholderTextColor={theme.colors.inputPlaceholder} 
                 secureTextEntry={!showPassword}
                 value={password}
                 onChangeText={setPassword}
@@ -146,7 +149,7 @@ export default function Signup({ setShowSignup, setCurrentUser }) {
               <TextInput 
                 style={styles.input} 
                 placeholder="••••••••" 
-                placeholderTextColor="#d1d5db" 
+                placeholderTextColor={theme.colors.inputPlaceholder} 
                 secureTextEntry={!showConfirmPassword}
                 value={confirmPassword}
                 onChangeText={setConfirmPassword}
@@ -178,7 +181,7 @@ export default function Signup({ setShowSignup, setCurrentUser }) {
             </>
           )}
         </View>
-      </View>
+      </ScrollView>
       </KeyboardAvoidingView>
     </LinearGradient>
   );

@@ -3,7 +3,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 const { width } = Dimensions.get('window');
 const scaleFont = size => Math.round(size * (width / 375));
 
-export const styles = StyleSheet.create({
+export const createStyles = (theme) => StyleSheet.create({
   Main: {
     flex: 1,
   },
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 12,
-    marginTop: 10,
+    marginTop: 15,
   },
   brandContainer: {
     flexDirection: 'row',
@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 8,
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.surface,
     marginRight: 8,
     justifyContent: 'center',
     alignItems: 'center',
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
   brandText: {
     fontSize: scaleFont(18),
     fontWeight: '700',
-    color: '#fff',
+    color: theme.colors.surface,
   },
   officialBadge: {
     backgroundColor: '#fbbf24',
@@ -53,24 +53,19 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#92400e',
   },
-  taglineContainer: {
-    marginBottom: 20,
-  },
   taglineMain: {
     fontSize: scaleFont(32),
     fontWeight: '800',
     color: '#fff',
-    marginBottom: 6,
   },
   taglineSubtext: {
     fontSize: scaleFont(13),
-    color: '#e3f2fd',
+    color: theme.colors.textSecondary,
   },
   signupCard: {
-    flex: 1,
     width: '100%',
     alignSelf: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.cardBackground,
     borderRadius: 16,
     padding: 24,
     shadowColor: '#000',
@@ -82,13 +77,13 @@ export const styles = StyleSheet.create({
   signupTitle: {
     fontSize: scaleFont(24),
     fontWeight: '800',
-    color: '#1f2937',
+    color: theme.colors.text,
     textAlign: 'left',
     marginBottom: 4,
   },
   signupSubtitle: {
     fontSize: scaleFont(13),
-    color: '#6b7280',
+    color: theme.colors.textSecondary,
     textAlign: 'left',
     marginBottom: 16,
   },
@@ -98,36 +93,36 @@ export const styles = StyleSheet.create({
   inputLabel: {
     fontSize: scaleFont(11),
     fontWeight: '600',
-    color: '#9ca3af',
+    color: theme.colors.textMuted,
     marginBottom: 6,
     textTransform: 'uppercase',
     letterSpacing: 0.3,
   },
   inputContainer: {
-    backgroundColor: '#f9fafb',
+    backgroundColor: theme.colors.inputBackground,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 12,
     paddingVertical: 12,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: theme.colors.inputBorder,
   },
   inputIcon: {
     marginRight: 8,
-    color: '#9ca3af',
+    color: theme.colors.inputPlaceholder,
   },
   input: {
     flex: 1,
     fontSize: scaleFont(15),
-    color: '#1f2937',
+    color: theme.colors.text,
     padding: 0,
   },
   eyeButton: {
     padding: 4,
   },
   showText: {
-    color: '#1e40af',
+    color: theme.colors.primary,
     fontSize: scaleFont(12),
     fontWeight: '600',
   },
@@ -136,10 +131,10 @@ export const styles = StyleSheet.create({
     paddingVertical: 14,
     alignItems: 'center',
     marginBottom: 10,
-    backgroundColor: '#1e40af',
+    backgroundColor: theme.colors.primary,
   },
   signupButtonText: {
-    color: '#fff',
+    color: theme.colors.surface,
     fontSize: scaleFont(16),
     fontWeight: '700',
   },
@@ -148,15 +143,16 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   signupText: {
-    color: '#6b7280',
+    color: theme.colors.textSecondary,
     fontSize: scaleFont(13),
   },
   signupLink: {
-    color: '#1e40af',
+    color: theme.colors.primary,
     fontSize: scaleFont(13),
     fontWeight: '700',
   },
   loadingIndicator: {
     marginVertical: 20,
+    color: theme.colors.primary,
   },
 });

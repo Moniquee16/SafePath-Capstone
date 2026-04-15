@@ -48,7 +48,7 @@ export default function Login({ setShowSignup, setShowAdmin, setCurrentUser, isA
     >
       <StatusBar style={theme.isDark ? "light" : "dark"} />
       <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
-        <View style={styles.scrollContainer}>
+        <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }} keyboardShouldPersistTaps="handled">
         
         {/* Header Section */}
         <View style={styles.headerContainer}>
@@ -83,7 +83,7 @@ export default function Login({ setShowSignup, setShowAdmin, setCurrentUser, isA
               <TextInput 
                 style={styles.input} 
                 placeholder="you@email.com" 
-                placeholderTextColor="#d1d5db" 
+                placeholderTextColor={theme.colors.inputPlaceholder} 
                 value={email}
                 onChangeText={setEmail}
                 keyboardType="email-address"
@@ -99,7 +99,7 @@ export default function Login({ setShowSignup, setShowAdmin, setCurrentUser, isA
               <TextInput 
                 style={styles.input} 
                 placeholder="••••••••" 
-                placeholderTextColor="#d1d5db" 
+                placeholderTextColor={theme.colors.inputPlaceholder} 
                 value={password}
                 onChangeText={setPassword}
                 secureTextEntry={!showPassword}  
@@ -152,7 +152,7 @@ export default function Login({ setShowSignup, setShowAdmin, setCurrentUser, isA
             </>
           )}
         </View>
-      </View>
+      </ScrollView>
       </KeyboardAvoidingView>
     </LinearGradient>
   );

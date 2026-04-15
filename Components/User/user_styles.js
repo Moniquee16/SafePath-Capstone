@@ -41,7 +41,7 @@ export const createStyles = (theme) => StyleSheet.create({
     flex: 1, 
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.inputBackground,
     borderRadius: 12,
     paddingHorizontal: 15,
     height: 48,
@@ -55,14 +55,6 @@ export const createStyles = (theme) => StyleSheet.create({
     flex: 1,
     fontSize: scaleFont(13),
     color: theme.colors.text,
-  },
-  logoutButton: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   welcomeSection: {
     borderBottomWidth: 1,
@@ -107,7 +99,7 @@ export const createStyles = (theme) => StyleSheet.create({
     justifyContent: 'space-around',
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: theme.isDark ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)',
     marginHorizontal: 16,
     borderRadius: 12,
     marginBottom: 16,
@@ -138,7 +130,7 @@ export const createStyles = (theme) => StyleSheet.create({
     marginBottom: 12,
   },
   streetCard: {
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.cardBackground,
     borderRadius: 12,
     padding: 14,
     marginBottom: 10,
@@ -157,12 +149,12 @@ export const createStyles = (theme) => StyleSheet.create({
   streetName: {
     fontSize: scaleFont(14),
     fontWeight: '700',
-    color: '#1f2937',
+    color: theme.colors.text,
     marginBottom: 4,
   },
   floodRiskText: {
     fontSize: scaleFont(11),
-    color: '#9ca3af',
+    color: theme.colors.textSecondary,
   },
   statusBadge: {
     paddingHorizontal: 10,
@@ -183,17 +175,16 @@ export const createStyles = (theme) => StyleSheet.create({
   },
   emptyStateText: {
     fontSize: scaleFont(13),
-    color: '#d1d5db',
+    color: theme.colors.textMuted,
     marginTop: 8,
   },
   // Modal Styles
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'flex-end',
   },
   settingsModal: {
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.modalBackground,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     maxHeight: '80%',
@@ -204,12 +195,12 @@ export const createStyles = (theme) => StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: theme.colors.border,
   },
   modalTitle: {
     fontSize: scaleFont(18),
     fontWeight: '700',
-    color: '#1f2937',
+    color: theme.colors.text,
   },
   settingsContent: {
     padding: 20,
@@ -220,13 +211,13 @@ export const createStyles = (theme) => StyleSheet.create({
     marginBottom: 24,
     paddingBottom: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: theme.colors.border,
   },
   settingsAvatar: {
     width: 50,
     height: 50,
     borderRadius: 25,
-    backgroundColor: '#1e40af',
+    backgroundColor: theme.colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 12,
@@ -234,7 +225,7 @@ export const createStyles = (theme) => StyleSheet.create({
   settingsAvatarText: {
     fontSize: scaleFont(20),
     fontWeight: '700',
-    color: '#fff',
+    color: theme.colors.surface,
   },
   userDetails: {
     flex: 1,
@@ -242,20 +233,20 @@ export const createStyles = (theme) => StyleSheet.create({
   userName: {
     fontSize: scaleFont(16),
     fontWeight: '700',
-    color: '#1f2937',
+    color: theme.colors.text,
     marginBottom: 2,
   },
   userEmail: {
     fontSize: scaleFont(13),
-    color: '#6b7280',
+    color: theme.colors.textSecondary,
   },
   settingsSection: {
-    marginBottom: 24,
+    marginBottom: 15,
   },
   sectionTitle: {
     fontSize: scaleFont(14),
     fontWeight: '600',
-    color: '#374151',
+    color: theme.colors.textSecondary,
     marginBottom: 12,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
@@ -274,7 +265,7 @@ export const createStyles = (theme) => StyleSheet.create({
   },
   settingLabel: {
     fontSize: scaleFont(15),
-    color: '#1f2937',
+    color: theme.colors.text,
     marginLeft: 12,
   },
   languageSelector: {
@@ -283,7 +274,7 @@ export const createStyles = (theme) => StyleSheet.create({
   },
   languageText: {
     fontSize: scaleFont(14),
-    color: '#6b7280',
+    color: theme.colors.textSecondary,
     marginRight: 8,
   },
   logoutButton: {
@@ -297,6 +288,7 @@ export const createStyles = (theme) => StyleSheet.create({
     marginTop: 16,
     borderWidth: 1,
     borderColor: '#fecaca',
+    marginBottom: 30,
   },
   logoutText: {
     fontSize: scaleFont(15),

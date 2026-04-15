@@ -82,7 +82,6 @@ export const createStyles = (theme) => StyleSheet.create({
     marginTop: 6,
   },
   loginCard: {
-    flex: 1,
     width: '100%',
     alignSelf: 'center',
     backgroundColor: theme.colors.cardBackground,
@@ -157,10 +156,10 @@ export const createStyles = (theme) => StyleSheet.create({
     paddingVertical: 14,
     alignItems: 'center',
     marginBottom: 10,
-    backgroundColor: '#1e40af',
+    backgroundColor: theme.colors.primary,
   },
   loginButtonText: {
-    color: '#fff',
+    color: theme.colors.surface,
     fontSize: scaleFont(16),
     fontWeight: '700',
   },
@@ -183,15 +182,16 @@ export const createStyles = (theme) => StyleSheet.create({
     justifyContent: 'center',
   },
   signupText: {
-    color: '#6b7280',
+    color: theme.colors.textSecondary,
     fontSize: scaleFont(13),
   },
   signupLink: {
-    color: '#1e40af',
+    color: theme.colors.primary,
     fontSize: scaleFont(13),
     fontWeight: '700',
   },
   loadingIndicator: {
     marginVertical: 20,
+    color: theme.colors.primary,
   },
 });
